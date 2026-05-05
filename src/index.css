@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: linear-gradient(135deg, #faf0e6 0%, #f5f5dc 40%, #d2b48c 100%);
+  color: #8b4513;
+  line-height: 1.6;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.08) 0, transparent 30%),
+    linear-gradient(90deg, rgba(139, 69, 19, 0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(139, 69, 19, 0.02) 1px, transparent 1px);
+  background-size: 240px 240px, 24px 24px, 24px 24px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
