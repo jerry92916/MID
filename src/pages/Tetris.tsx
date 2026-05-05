@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import './Tetris.css'
 
-type Tetromino = number[][][]
+type Tetromino = number[][]
 
 const TETROMINOES: Tetromino[] = [
   // I
@@ -45,7 +45,7 @@ const GRID_HEIGHT = 20
 const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE']
 
 interface Piece {
-  tetromino: number[][]
+  tetromino: Tetromino
   x: number
   y: number
   color: string
@@ -61,7 +61,7 @@ function Tetris() {
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
-  const gameLoopRef = useRef<NodeJS.Timeout | null>(null)
+  const gameLoopRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const getRandomPiece = (): Piece => {
     const tetromino = TETROMINOES[Math.floor(Math.random() * TETROMINOES.length)]
@@ -115,7 +115,7 @@ function Tetris() {
   )
 
   const placePiece = useCallback(
-    (piece: Piece): [string[][], number] => {
+    (piece: Piece): [(string | null)[][], number] => {
       const newGrid = grid.map((row) => [...row])
       let linesCleared = 0
 

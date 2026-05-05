@@ -4,6 +4,7 @@ function About() {
   const birthDate = new Date('2003-09-16')
   const today = new Date()
   const age = Math.floor((today.getTime() - birthDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000))
+  const profileImage = `${import.meta.env.BASE_URL}profile.jpg`
 
   return (
     <div className="about-page">
@@ -16,7 +17,7 @@ function About() {
           <div className="about-image">
             <div className="image-frame">
               <img
-                src="/profile.jpg"
+                src={profileImage}
                 alt="陳宏傑 個人照片"
                 className="profile-photo"
               />
